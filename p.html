@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vyom Darji - Portfolio</title>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1A1A1A;
+      color: #FFFFFF;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    a {
+      color: #00FFFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #8A2BE2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(26, 26, 26, 0.9);
+      padding: 10px 0;
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    /* Home Section */
+    #home {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1A1A1A, #000000);
+    }
+
+    #home h1 {
+      font-size: 4rem;
+      margin: 0;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    #home p {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .cta-button {
+      padding: 10px 20px;
+      background-color: #00FFFF;
+      color: #1A1A1A;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: fadeIn 4s ease-in-out;
+    }
+
+    .cta-button:hover {
+      background-color: #8A2BE2;
+      transform: scale(1.05);
+    }
+
+    .social-icons {
+      margin-top: 20px;
+      animation: fadeIn 5s ease-in-out;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-5px);
+    }
+
+    /* About Section */
+    #about {
+      padding: 100px 0;
+      background-color: #2A2A2A;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 100px;
+    }
+
+    .about-img {
+      width: 250px;
+      height: 250px;
+      border: 8px solid #00FFFF;
+      border-radius: 50%;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .about-img:hover {
+      transform: scale(1.1);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text {
+      max-width: 600px;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-text ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .about-text ul li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .about-text ul li i {
+      margin-right: 10px;
+      color: #00FFFF;
+    }
+
+    /* Skills Section */
+    #skills {
+      padding: 100px 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      text-align: center;
+      padding: 20px;
+      background-color: #2A2A2A;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-card i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Projects Section */
+    #projects {
+      padding: 100px 0;
+      background-color: #2A2A2A;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: #1A1A1A;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 3px solid #00FFFF;
+      margin-bottom: 15px;
+    }
+
+    .project-card h3 {
+      margin: 0;
+    }
+
+    .project-card p {
+      margin: 10px 0;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #00FFFF;
+      transition: color 0.3s;
+    }
+
+    .project-card a:hover {
+      color: #8A2BE2;
+    }
+
+    /* Experience Section */
+    #experience {
+      padding: 100px 0;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      padding: 20px;
+      background-color: #2A2A2A;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .timeline-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -20px;
+      width: 2px;
+      height: 100%;
+      background-color: #00FFFF;
+    }
+
+    /* Contact Section */
+    #contact {
+      padding: 100px 0;
+      background-color: #2A2A2A;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #1A1A1A;
+      color: #FFFFFF;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      background-color: #2A2A2A;
+    }
+
+    .contact-form button {
+      padding: 10px;
+      background-color: #00FFFF;
+      color: #1A1A1A;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #8A2BE2;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #1A1A1A;
+    }
+
+    /* Dark Mode */
+    body.light-mode {
+      background-color: #FFFFFF;
+      color: #1A1A1A;
+    }
+
+    body.light-mode .navbar {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    body.light-mode .cta-button {
+      background-color: #8A2BE2;
+      color: #FFFFFF;
+    }
+
+    body.light-mode .skill-card,
+    body.light-mode .project-card,
+    body.light-mode .timeline-item,
+    body.light-mode .contact-form input,
+    body.light-mode .contact-form textarea {
+      background-color: #F0F0F0;
+      color: #1A1A1A;
+    }
+
+    body.light-mode #about,
+    body.light-mode #projects,
+    body.light-mode #contact {
+      background-color: #F0F0F0;
+    }
+
+    body.light-mode footer {
+      background-color: #E0E0E0;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="container">
+      <h1>Vyom Darji</h1>
+      <p>Software Developer | Problem Solver | Web Developer</p>
+      <a href="Resume_VyomDarji.pdf">
+        <button class="cta-button">Download Resume</button>
+      </a>
+      <div class="social-icons">
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="https://leetcode.com" target="_blank">LeetCode</a>
+        <a href="mailto:vyom301004@gmail.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-img">
+          <img src="photo.jpg" alt="Vyom Darji">
+        </div>
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>Hi, I'm Vyom Darji, a passionate Computer Science student at Pandit Deendayal Energy University, Gujarat, India. I specialize in web development, system design, and data structures & algorithms. With a strong foundation in programming and problem-solving, I enjoy building interactive web applications and solving challenging problems on platforms like LeetCode and Codeforces.</p>
+          <p>I am proficient in multiple programming languages and frameworks, including JavaScript, Python, React, and Node.js. My technical expertise extends to databases like MySQL and tools like Git and Linux. I am also deeply interested in AI development, competitive programming, and tech blogging.</p>
+          <p><strong>Personal Qualities:</strong></p>
+          <ul>
+            <li><i class="fas fa-check"></i>Leadership</li>
+            <li><i class="fas fa-check"></i>Problem Solving</li>
+            <li><i class="fas fa-check"></i>Communication</li>
+            <li><i class="fas fa-check"></i>Critical Thinking</li>
+            <li><i class="fas fa-check"></i>Active Listening</li>
+          </ul>
+          <p><strong>Hobbies & Interests:</strong></p>
+          <ul>
+            <li><i class="fas fa-code"></i>Coding Challenges & Competitive Programming</li>
+            <li><i class="fas fa-pen"></i>Tech Blogging & Writing Articles</li>
+            <li><i class="fas fa-gamepad"></i>Gaming & AI Development</li>
+            <li><i class="fas fa-camera"></i>Travel & Photography</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fab fa-html5"></i>
+          <p>HTML</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-css3-alt"></i>
+          <p>CSS</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-js"></i>
+          <p>JavaScript</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-react"></i>
+          <p>React</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-python"></i>
+          <p>Python</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-database"></i>
+          <p>MySQL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="car_rental.jpg" alt="Car Rental Service">
+          <h3>Car Rental Service</h3>
+          <p>Developed a comprehensive, user-friendly car rental website using HTML, CSS, JavaScript, and PHP.</p>
+          <a href="#">GitHub</a>
+        </div>
+        <div class="project-card">
+          <img src="currency.png" alt="Currency Converter">
+          <h3>Currency Converter</h3>
+          <p>Built an interactive currency converter website with real-time exchange rates using HTML, CSS, and JavaScript.</p>
+          <a href="#">GitHub</a>
+        </div>
+        <div class="project-card">
+          <img src="rock_paper.png" alt="Rock-Paper-Scissors Game">
+          <h3>Rock-Paper-Scissors Game</h3>
+          <p>Created a fun and interactive Rock-Paper-Scissors game using HTML, CSS, and JavaScript.</p>
+          <a href="#">GitHub</a>
+        </div>
+        <div class="project-card">
+          <img src="amazon.png" alt="Amazon Clone">
+          <h3>Amazon Clone</h3>
+          <p>Developed a front-end clone of the Amazon website using HTML and CSS.</p>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Baroda Youth Federation</h3>
+          <p>Civic and Social-services Intern | June 2023 – July 2023</p>
+          <p>Taught children from underprivileged families how to use computers and the internet, improving their confidence and learning outcomes.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>ACM-PDEU Student Chapter</h3>
+          <p>Publicity Member | September 2023 – August 2024</p>
+          <p>Applied marketing strategies to increase event reach by 20% and successfully promoted club events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Vyom Darji. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('light-mode');
+    }
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
