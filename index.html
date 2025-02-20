@@ -140,6 +140,10 @@
     .about-img {
       width: 250px;
       height: 250px;
+      min-width: 250px;
+      min-height: 250px;
+      max-width: 250px;
+      max-height: 250px;
       border: 8px solid #00FFFF;
       border-radius: 50%;
       overflow: hidden;
@@ -361,6 +365,11 @@
       background-color: rgba(255, 255, 255, 0.9);
     }
 
+    body.light-mode .navbar a,
+    body.light-mode .dark-mode-toggle {
+      color: #1A1A1A;
+    }
+
     body.light-mode .cta-button {
       background-color: #8A2BE2;
       color: #FFFFFF;
@@ -385,6 +394,18 @@
       background-color: #E0E0E0;
     }
 
+    /* Scroll Animations */
+    .scroll-animation {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .scroll-animation.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -404,7 +425,7 @@
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </div>
-      <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+      <!-- <button class="dark-mode-toggle" onclick="toggleDarkMode()"></button> -->
     </div>
   </nav>
 
@@ -427,10 +448,10 @@
 
   <!-- About Section -->
   <section id="about">
-    <div class="container">
+    <div class="container scroll-animation">
       <div class="about-content">
         <div class="about-img">
-          <img src="photo.jpg" alt="Vyom Darji">
+          <img src="photo2.jpg" alt="Vyom Darji">
         </div>
         <div class="about-text">
           <h2>About Me</h2>
@@ -458,7 +479,7 @@
 
   <!-- Skills Section -->
   <section id="skills">
-    <div class="container">
+    <div class="container scroll-animation">
       <h2>Skills</h2>
       <div class="skills-grid">
         <div class="skill-card">
@@ -491,32 +512,32 @@
 
   <!-- Projects Section -->
   <section id="projects">
-    <div class="container">
+    <div class="container scroll-animation">
       <h2>Projects</h2>
       <div class="projects-grid">
         <div class="project-card">
           <img src="car_rental.jpg" alt="Car Rental Service">
           <h3>Car Rental Service</h3>
           <p>Developed a comprehensive, user-friendly car rental website using HTML, CSS, JavaScript, and PHP.</p>
-          <a href="#">GitHub</a>
+          <a href="./web d project car rent/index.html">GitHub</a>
         </div>
         <div class="project-card">
           <img src="currency.png" alt="Currency Converter">
           <h3>Currency Converter</h3>
           <p>Built an interactive currency converter website with real-time exchange rates using HTML, CSS, and JavaScript.</p>
-          <a href="#">GitHub</a>
+          <a href="./currency_convertor/index.html">GitHub</a>
         </div>
         <div class="project-card">
           <img src="rock_paper.png" alt="Rock-Paper-Scissors Game">
           <h3>Rock-Paper-Scissors Game</h3>
           <p>Created a fun and interactive Rock-Paper-Scissors game using HTML, CSS, and JavaScript.</p>
-          <a href="#">GitHub</a>
+          <a href="./game/index.html">GitHub</a>
         </div>
         <div class="project-card">
           <img src="amazon.png" alt="Amazon Clone">
           <h3>Amazon Clone</h3>
           <p>Developed a front-end clone of the Amazon website using HTML and CSS.</p>
-          <a href="#">GitHub</a>
+          <a href="./amazon/index.html">GitHub</a>
         </div>
       </div>
     </div>
@@ -524,7 +545,7 @@
 
   <!-- Experience Section -->
   <section id="experience">
-    <div class="container">
+    <div class="container scroll-animation">
       <h2>Experience</h2>
       <div class="timeline">
         <div class="timeline-item">
@@ -543,7 +564,7 @@
 
   <!-- Contact Section -->
   <section id="contact">
-    <div class="container">
+    <div class="container scroll-animation">
       <h2>Contact</h2>
       <form class="contact-form">
         <input type="text" placeholder="Name" required>
@@ -577,6 +598,28 @@
         });
       });
     });
+
+    // Scroll Animations
+    const scrollElements = document.querySelectorAll('.scroll-animation');
+    const elementInView = (el) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return elementTop <= window.innerHeight * 0.75;
+    };
+
+    const displayScrollElement = (element) => {
+      element.classList.add('visible');
+    };
+
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el)) {
+          displayScrollElement(el);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScrollAnimation);
+    handleScrollAnimation(); // Trigger on page load
   </script>
 </body>
 </html>
