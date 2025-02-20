@@ -411,6 +411,96 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      /* Navbar */
+      .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar a {
+        margin: 10px 0;
+      }
+
+      /* Home Section */
+      #home h1 {
+        font-size: 3rem;
+      }
+
+      #home p {
+        font-size: 1.2rem;
+      }
+
+      /* About Section */
+      .about-content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .about-img {
+        width: 200px;
+        height: 200px;
+        min-width: 200px;
+        min-height: 200px;
+        max-width: 200px;
+        max-height: 200px;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      /* Experience Section */
+      .timeline-item::before {
+        left: -10px;
+      }
+
+      /* Contact Section */
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Home Section */
+      #home h1 {
+        font-size: 2.5rem;
+      }
+
+      #home p {
+        font-size: 1rem;
+      }
+
+      /* About Section */
+      .about-img {
+        width: 150px;
+        height: 150px;
+        min-width: 150px;
+        min-height: 150px;
+        max-width: 150px;
+        max-height: 150px;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
@@ -425,7 +515,7 @@
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </div>
-      <!-- <button class="dark-mode-toggle" onclick="toggleDarkMode()"></button> -->
+      <!-- <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button> -->
     </div>
   </nav>
 
@@ -509,6 +599,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- Projects Section -->
   <section id="projects">
